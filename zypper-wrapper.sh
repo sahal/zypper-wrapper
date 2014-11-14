@@ -14,10 +14,9 @@ TEMP_DIR="$DIR/logs/"
 # NOTE: if you use /tmp/ all users can read packages you (attempt to) install
 #TEMP_DIR="/tmp/"
 
-function zypper { # used for testing on non-OpenSUSE systems
+#function zypper { # used for testing on non-OpenSUSE systems
 #  echo "actually zypper ""$@"
-  zypper "$@"
-}
+#}
 
 # test if "$1" == "in" - if it is continue; otherwise pass everything to zypper
 # NOTE: not dealing with installing multple packages
@@ -36,10 +35,10 @@ else
 fi
 
 zypper "$@" | tee "$temp"
-# if zypper does not end with 0
+# if zypper does not exit with 0
 if [ " ${PIPESTATUS[0]}" -ne "0" ]; then
-  # check output for "'$1' not found in package names."
-#  grep "'$2' not found in package names." < "$temp" &> /dev/null
+  # check output for ...
+  #grep "'$2' not found in package names." < "$temp" &> /dev/null
   grep "No provider of '$2' found." < "$temp" &> /dev/null
   if [ "$?" -eq "0" ]; then
     # have zypper search for "$2" in packages
