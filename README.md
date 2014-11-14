@@ -4,12 +4,12 @@ zypper-wrapper
 This script is a very simple zypper wrapper (but I'm not a Rapper).
 If you run:
 
-# ./zypper-wrapper.sh in $2
+  # ./zypper-wrapper.sh in $2
 
 and it returns output with "No provider of '$2' found." this script will
 automagically run:
 
-# zypper se $2
+  # zypper se $2
 
 NOTES
 -----
