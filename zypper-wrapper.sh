@@ -9,6 +9,8 @@ set -e
 
 # the scripts directory
 DIR="$( cd "$( dirname "$0" )" && pwd )"
+# REQUIRED: Zypper binary location
+ZYPPER_LOCATION="$(which zypper)"
 # REQUIRED: directory to store tmp files
 TEMP_DIR="$DIR/logs/"
 # NOTE: if you use /tmp/ all users can read packages you (attempt to) install
@@ -21,7 +23,7 @@ TEMP_DIR="$DIR/logs/"
 # test if "$1" == "in" - if it is continue; otherwise pass everything to zypper
 # NOTE: not dealing with installing multple packages
 if [[ "$1" != "in" || "$#" != "2" ]]; then
-  zypper "$@"
+  $ZYPPER_LOCATION "$@"
   exit
 fi
 
